@@ -6,6 +6,7 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
+import net.matsudamper.calendar.tools.feature.move.ui.MoveScreen
 import net.matsudamper.calendar.tools.navigation.Navigations
 import net.matsudamper.calendar.tools.ui.home.HomeScreen
 
@@ -24,7 +25,7 @@ internal fun CalendarNavDisplay(
                 }
 
                 Navigations.Move -> NavEntry(navigation) {
-                    Text("Move Screen - Navigation3")
+                    MoveScreen()
                 }
 
                 Navigations.Register -> NavEntry(navigation) {
