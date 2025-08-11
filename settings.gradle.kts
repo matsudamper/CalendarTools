@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "CalendarTools"
 include(":app")
 include(":feature-move")
+include(":navigation")
