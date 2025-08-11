@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
             CalendarToolsTheme {
                 @Suppress("UNCHECKED_CAST")
                 val backStack = rememberNavBackStack<Navigations>(Navigations.Home)
-                        as SnapshotStateList<Navigations>
+                    as SnapshotStateList<Navigations>
                 CalendarNavDisplay(
-                    backStack = backStack
+                    backStack = backStack,
                 )
             }
         }

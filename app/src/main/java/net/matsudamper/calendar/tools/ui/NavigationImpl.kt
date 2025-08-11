@@ -31,5 +31,6 @@ internal fun CalendarNavDisplay(
                     Text("Register Screen - Navigation3")
                 }
             }
-        })
+        },
+    )
 }

@@ -7,10 +7,10 @@ import kotlinx.serialization.Serializable
 sealed interface Navigations : NavKey {
     @Serializable
     data object Home : Navigations
-    
+
     @Serializable
     data object Move : Navigations
-    
+
     @Serializable
     data object Register : Navigations
 }

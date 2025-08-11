@@ -25,7 +25,7 @@ import net.matsudamper.calendar.tools.ui.theme.CalendarToolsTheme
 internal data class FeatureItem(
     val title: String,
     val description: String,
-    val onClick: () -> Unit
+    val onClick: () -> Unit,
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,17 +36,17 @@ internal fun HomeScreen() {
         mutableStateOf(
             ContextCompat.checkSelfPermission(
                 context,
-                Manifest.permission.READ_CALENDAR
+                Manifest.permission.READ_CALENDAR,
             ) == PackageManager.PERMISSION_GRANTED &&
-                    ContextCompat.checkSelfPermission(
-                        context,
-                        Manifest.permission.WRITE_CALENDAR
-                    ) == PackageManager.PERMISSION_GRANTED
+                ContextCompat.checkSelfPermission(
+                    context,
+                    Manifest.permission.WRITE_CALENDAR,
+                ) == PackageManager.PERMISSION_GRANTED,
         )
     }
 
     val permissionLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
+        ActivityResultContracts.RequestMultiplePermissions(),
     ) { permissions ->
         hasCalendarPermission = permissions.all { it.value }
     }
@@ -56,12 +56,12 @@ internal fun HomeScreen() {
             FeatureItem(
                 title = "一括移動",
                 description = "複数のイベントを一度に移動",
-                onClick = { /* TODO */ }
+                onClick = { /* TODO */ },
             ),
             FeatureItem(
                 title = "一括登録",
                 description = "プリセットから一括で移動",
-                onClick = { /* TODO */ }
+                onClick = { /* TODO */ },
             ),
         )
     }
@@ -78,14 +78,14 @@ internal fun HomeScreen() {
                             contentDescription = "設定",
                         )
                     }
-                }
+                },
             )
         },
     ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
         ) {
             if (!hasCalendarPermission) {
                 PermissionWarningCard(
@@ -93,13 +93,13 @@ internal fun HomeScreen() {
                         permissionLauncher.launch(
                             arrayOf(
                                 Manifest.permission.READ_CALENDAR,
-                                Manifest.permission.WRITE_CALENDAR
-                            )
+                                Manifest.permission.WRITE_CALENDAR,
+                            ),
                         )
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
+                        .padding(16.dp),
                 )
             }
 
@@ -108,13 +108,13 @@ internal fun HomeScreen() {
                 contentPadding = PaddingValues(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
             ) {
                 items(features) { feature ->
                     FeatureCard(
                         feature = feature,
                         enabled = hasCalendarPermission,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
                     )
                 }
             }
@@ -125,68 +125,69 @@ internal fun HomeScreen() {
 @Composable
 private fun PermissionWarningCard(
     onRequestPermission: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Card(
         modifier = modifier,
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.errorContainer
-        )
+            containerColor = MaterialTheme.colorScheme.errorContainer,
+        ),
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
                 imageVector = Icons.Default.Warning,
                 contentDescription = "警告",
                 tint = MaterialTheme.colorScheme.onErrorContainer,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(24.dp),
             )
             Spacer(modifier = Modifier.width(12.dp))
             Column(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
             ) {
                 Text(
                     text = "カレンダーへのアクセス許可が必要です",
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onErrorContainer
+                    color = MaterialTheme.colorScheme.onErrorContainer,
                 )
                 Text(
                     text = "機能を使用するにはカレンダーの読み書き権限が必要です",
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onErrorContainer
+                    color = MaterialTheme.colorScheme.onErrorContainer,
                 )
             }
             Spacer(modifier = Modifier.width(12.dp))
             Button(
                 onClick = onRequestPermission,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.error
-                )
+                    containerColor = MaterialTheme.colorScheme.error,
+                ),
             ) {
                 Text(
                     text = "許可",
-                    color = MaterialTheme.colorScheme.onError
+                    color = MaterialTheme.colorScheme.onError,
                 )
             }
         }
     }
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun FeatureCard(
     feature: FeatureItem,
     enabled: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Card(
-        onClick = if (enabled) feature.onClick else {
+        onClick = if (enabled) {
+            feature.onClick
+        } else {
             {}
         },
         modifier = modifier,
@@ -196,14 +197,14 @@ private fun FeatureCard(
                 MaterialTheme.colorScheme.surfaceContainer
             } else {
                 MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.5f)
-            }
-        )
+            },
+        ),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
                 text = feature.title,
@@ -213,7 +214,7 @@ private fun FeatureCard(
                     MaterialTheme.colorScheme.onSurface
                 } else {
                     MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
-                }
+                },
             )
             Text(
                 text = feature.description,
@@ -222,7 +223,7 @@ private fun FeatureCard(
                     MaterialTheme.colorScheme.onSurfaceVariant
                 } else {
                     MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
-                }
+                },
             )
         }
     }
