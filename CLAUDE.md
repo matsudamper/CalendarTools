@@ -6,6 +6,7 @@ Androidカレンダーの便利ツールのアプリケーション
 CalendarTools/
 ├── app/                      # メインアプリケーションモジュール
 ├── feature-move/             # 一括移動機能モジュール
+├── navigation/               # ナビゲーションに必要な型を定義するモジュール
 ├── gradle/
 │   └── libs.versions.toml    # 依存関係バージョン管理
 └── build.gradle.kts          # ルートビルド設定
