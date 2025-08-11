@@ -3,6 +3,8 @@
     "allow": [
       "Bash(./gradlew lint:*)",
       "Bash(./gradlew assembleDebug:*)",
+      "Bash(./gradlew ktlintCheck:*)",
+      "Bash(./gradlew ktlintFormat:*)",
       "WebFetch(domain:developer.android.com)",
       "Bash(mkdir:*)"
     ],
