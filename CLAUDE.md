@@ -20,6 +20,11 @@ CalendarTools/
 - Material Design 3 - Expressiveに準拠する
   - https://m3.material.io/blog/building-with-m3-expressive
 
-## 通らないといけないコマンド
+## チェック
+細かくビルドしてビルド常にビルドできる状態にする事。
+連続してビルドが3回失敗したら停止すること。
+ビルドが失敗したからといって命令に無視して無理やりビルドを通さないこと。
+
+### 通らないといけないコマンド
 - Lintチェック: `./gradlew lint`
 - デバッグビルド: `./gradlew assembleDebug`
