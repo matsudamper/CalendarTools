@@ -11,7 +11,7 @@ composeBom = "2025.07.00"
 appcompat = "1.7.1"
 navigation3 = "1.0.0-alpha06"
 kotlinxSerialization = "1.9.0"
-ktlint = "12.1.1"
+ktlint = "13.0.0"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
