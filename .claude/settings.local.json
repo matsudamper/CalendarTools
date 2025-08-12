@@ -6,7 +6,8 @@
       "Bash(./gradlew ktlintCheck:*)",
       "Bash(./gradlew ktlintFormat:*)",
       "WebFetch(domain:developer.android.com)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(move:*)"
     ],
     "deny": []
   }
