@@ -43,6 +43,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import net.matsudamper.calendar.tools.navigation.NavController
+import net.matsudamper.calendar.tools.navigation.Navigations
+import net.matsudamper.calendar.tools.navigation.rememberNavController
 import net.matsudamper.calendar.tools.ui.theme.CalendarToolsTheme
 
 internal data class FeatureItem(
@@ -53,7 +56,9 @@ internal data class FeatureItem(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun HomeScreen() {
+internal fun HomeScreen(
+    navController: NavController,
+) {
     val context = LocalContext.current
     var hasCalendarPermission by remember {
         mutableStateOf(
@@ -79,7 +84,7 @@ internal fun HomeScreen() {
             FeatureItem(
                 title = "一括移動",
                 description = "複数のイベントを一度に移動",
-                onClick = { /* TODO */ },
+                onClick = { navController.navigate(Navigations.Move) },
             ),
             FeatureItem(
                 title = "一括登録",
@@ -256,6 +261,8 @@ private fun FeatureCard(
 @Composable
 fun HomeScreenPreview() {
     CalendarToolsTheme {
-        HomeScreen()
+        HomeScreen(
+            navController = rememberNavController(),
+        )
     }
 }
