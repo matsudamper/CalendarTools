@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "net.matsudamper.calendar.tools.mylibrary"
+    namespace = "net.matsudamper.calendar.tools.feature.move"
     compileSdk = 36
 
     defaultConfig {
